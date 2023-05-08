@@ -77,7 +77,7 @@ Kd_opt=0
 
 //Define the gains in a structure that aligns with Xcos
 global time
-sim_time = 30//THIS SHOULD BE CHANGED EACH TIME you change simulation time
+sim_time = 20//THIS SHOULD BE CHANGED EACH TIME you change simulation time
 time = (0:0.1:sim_time)'
 //len_time = length(time)
 //Kp.time = time
@@ -117,7 +117,7 @@ global PID_error
 PopSize     = 100;
 Proba_cross = 0.7;
 Proba_mut   = 0.1;
-NbGen       = 5;
+NbGen       = 1;
 NbCouples   = 110;
 Log         = %T;
 
@@ -126,14 +126,14 @@ Log         = %T;
 
 ga_params = init_param();
 ga_params = add_param(ga_params,'minbound',[0;0;0;0;1]);
-ga_params = add_param(ga_params,'maxbound',[1000;1000;1000;1000;100]);
+ga_params = add_param(ga_params,'maxbound',[100;100;100;100;100]);
 ga_params = add_param(ga_params,'dimensions',5);
 
 // Run the genetic algorithm optimization
 [pop_opt, fobj_pop_opt] = optim_ga(objective_func,PopSize,NbGen,Proba_mut,Proba_cross,Log,ga_params)
 
 //Run the simulation again with the optimized parameters
-
+opt = [Kp_opt,Ki_opt, Kd_opt, Tc_opt, Ko_opt]
 
 // Load the Xcos diagram containing the plant and PID controller blocks
 //importXcosDiagram('fuel_cell.zcos')
