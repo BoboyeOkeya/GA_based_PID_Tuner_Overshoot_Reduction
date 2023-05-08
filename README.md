@@ -48,11 +48,9 @@ This systems were developed in Xcos and Scilab and the results are shown below:
 
 ## Practicalities
 
-The setpoint is a series of step signals, but I smoothened the edges of these signals by passing them through a low-pass filter, which would allow the control system to gradually follow the reference, hence reducing the amount of overshoot caused by sudden step changes.
+The setpoint is a series of step signals, but I smoothened the edges of these signals by passing them through a low-pass filter, which would allow the control system to gradually follow the reference, hence reducing the amount of overshoot caused by sudden step changes.Another benefit of these setpoint filtering for a real practical DC motor is that by preventing overshoot, for example in armature current, the motor windings and power electronics will be protected from damage.
 
-Another benefit of these setpoint filtering for a real practical DC motor is that can cause overcurrent and destroy the motor windings.
-
-Furthermore, I passed in a load torque which is a series of step signals as the second input to the system. Practically, your DC motor will have a certain amount of load torque it can support when maintaining a certain speed--especially if it is in a constant power operation $MechanicalPower  = Torque * speed$. However, you might need to simply increase the saturation limit on the control input, which would allow the controller produce more DC voltage required to accelerate the rotor's speed to a higher setpoint or support a higher load torque.
+Furthermore, I passed in a load torque which is a series of step signals as the second input to the system. Practically, your DC motor will have a certain amount of load torque it can support while maintaining a certain speed--especially if it is in a constant power operation mode where $MechanicalPower  = Torque * speed$. However, to support higher speed setpoints or larger load torque, you might need to simply increase the saturation limit on the control input, which would allow the controller produce more DC voltage required to accelerate the rotor's speed or produce more armature current to buildup sufficient electromagnetic torque needed to balance the load torque.
 
 
 
