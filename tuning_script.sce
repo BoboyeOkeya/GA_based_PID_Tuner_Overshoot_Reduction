@@ -79,14 +79,6 @@ Kd_opt=0
 global time
 sim_time = 20//THIS SHOULD BE CHANGED EACH TIME you change simulation time
 time = (0:0.1:sim_time)'
-//len_time = length(time)
-//Kp.time = time
-//Kp.values = Kp_opt*ones(len_time,1)
-//Ki.time = time
-//Ki.values = Ki_opt*ones(len_time,1)
-//Kd.time = time
-//Kd.values = Kd_opt*ones(len_time,1)
-
 
 //Define the global derivative time constant to be sent to Xcos
 global Tc_base
@@ -134,10 +126,4 @@ ga_params = add_param(ga_params,'dimensions',5);
 
 //Run the simulation again with the optimized parameters
 opt = [Kp_opt,Ki_opt, Kd_opt, Tc_opt, Ko_opt]
-
-// Load the Xcos diagram containing the plant and PID controller blocks
-//importXcosDiagram('fuel_cell.zcos')
-//typeof(scs_m) //The diagram data structure
-//[Info, status] = xcos_simulate(scs_m, 4)
-
 
